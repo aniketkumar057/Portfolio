@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniket Kumar | Java Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cosmic: {
+                            primary: '#00D4FF',
+                            secondary: '#0F172A',
+                            accent: '#FF0080',
+                            dark: '#0A0F1E',
+                            neon: '#00FF88',
+                            purple: '#8A2BE2',
+                            java: '#ED8B00',
+                            spring: '#6DB33F'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'space': ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'text-shimmer': 'text-shimmer 3s ease-in-out infinite alternate',
+                        'fade-in': 'fade-in 0.8s ease-out',
+                        'slide-in': 'slide-in 0.6s ease-out',
+                        'pulse-soft': 'pulse-soft 4s ease-in-out infinite',
+                        'orbit': 'orbit 20s linear infinite',
+                        'twinkle': 'twinkle 5s ease-in-out infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'slide-up': 'slide-up 0.8s ease-out',
+                        'scale-in': 'scale-in 0.6s ease-out',
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'blink-caret': 'blink-caret 0.75s step-end infinite',
+                        'bounce-soft': 'bounce-soft 2s infinite',
+                        'progress-bar': 'progress-bar 2s ease-in-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-15px) rotate(3deg)' },
+                            '66%': { transform: 'translateY(-8px) rotate(-2deg)' },
+                        },
+                        glow: {
+                            '0%': {
+                                boxShadow: '0 0 5px currentColor, 0 0 10px currentColor',
+                            },
+                            '100%': {
+                                boxShadow: '0 0 20px currentColor, 0 0 40px currentColor',
+                            },
+                        },
+                        'text-shimmer': {
+                            '0%': { 'background-position': '-200% 0' },
+                            '100%': { 'background-position': '200% 0' },
+                        },
+                        'fade-in': {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        'slide-in': {
+                            '0%': { opacity: 0, transform: 'translateX(-30px)' },
+                            '100%': { opacity: 1, transform: 'translateX(0)' },
+                        },
+                        'pulse-soft': {
+                            '0%, 100%': { opacity: 0.6 },
+                            '50%': { opacity: 1 },
+                        },
+                        orbit: {
+                            '0%': { transform: 'rotate(0deg) translateX(150px) rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg) translateX(150px) rotate(-360deg)' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+                            '50%': { opacity: 1, transform: 'scale(1.5)' },
+                        },
+                        morph: {
+                            '0%, 100%': { borderRadius: '63% 37% 54% 46% / 55% 48% 52% 45%' },
+                            '50%': { borderRadius: '37% 63% 46% 54% / 48% 55% 45% 52%' },
+                        },
+                        'slide-up': {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        'scale-in': {
+                            '0%': { opacity: 0, transform: 'scale(0.9)' },
+                            '100%': { opacity: 1, transform: 'scale(1)' },
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' }
+                        },
+                        'blink-caret': {
+                            'from, to': { 'border-color': 'transparent' },
+                            '50%': { 'border-color': 'currentColor' }
+                        },
+                        'bounce-soft': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'progress-bar': {
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--target-width)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0A0F1E 0%, #0F172A 50%, #1a1035 100%);
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #00D4FF, #FF0080, #00FF88, #8A2BE2);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shimmer 4s ease-in-out infinite alternate;
+        }
+
+        .text-gradient-java {
+            background: linear-gradient(90deg, #ED8B00, #6DB33F, #00D4FF);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shimmer 4s ease-in-out infinite alternate;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(16px);
+            background-color: rgba(10, 15, 30, 0.8);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #00D4FF 0%, #FF0080 50%, #00FF88 100%);
+            animation: morph 8s ease-in-out infinite;
+            box-shadow:
+                0 0 80px rgba(0, 212, 255, 0.4),
+                inset 0 0 80px rgba(0, 212, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: hologram 8s ease-in-out infinite;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow:
+                0 15px 40px -10px rgba(0, 212, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-12px) scale(1.02);
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.6;
+            z-index: 0;
+            animation: pulse-soft 12s ease-in-out infinite;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s ease-in-out infinite;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        .human-text {
+            line-height: 1.7;
+        }
+
+        .theme-btn {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .theme-btn:hover::before {
+            left: 100%;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .theme-btn.active {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px currentColor;
+        }
+
+        @keyframes hologram {
+            '0%, 100%': {
+                transform: 'rotate(45deg) translateX(-20%)'
+            }
+
+            ,
+            '50%': {
+                transform: 'rotate(45deg) translateX(20%)'
+            }
+
+            ,
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            animation: fade-in 0.8s ease-out forwards;
+        }
+
+        .stagger-animation>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-animation>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-animation>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-animation>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-animation>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #00D4FF, #FF0080);
+            z-index: 100;
+            transition: width 0.4s ease;
+        }
+
+        .progress-bar {
+            height: 6px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #00D4FF, #FF0080);
+            width: 0%;
+            animation: progress-bar 2s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10, 15, 30, 0.9));
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00D4FF, #FF0080);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #00D4FF;
+            box-shadow: 0 0 10px #00D4FF;
+        }
+
+        .testimonial-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 4rem;
+            color: #00D4FF;
+            opacity: 0.3;
+        }
+
+        .contact-input {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-input:focus {
+            outline: none;
+            border-color: #00D4FF;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(237, 139, 0, 0.2);
+            border: 1px solid rgba(237, 139, 0, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(237, 139, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .java-card {
+            border-left: 4px solid #ED8B00;
+        }
+
+        .spring-card {
+            border-left: 4px solid #6DB33F;
+        }
+    </style>
+</head>
+
+<body class="theme-transition">
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur py-4 transition-all duration-500" id="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-r from-cosmic-java to-cosmic-spring flex items-center justify-center shadow-lg animate-pulse-soft">
+                    <span class="font-bold text-white text-lg">AK</span>
+                </div>
+                <span class="text-xl font-bold text-gradient animate-slide-in">Aniket Kumar</span>
+            </div>
+
+            <div class="hidden lg:flex space-x-10 stagger-animation">
+                <a href="#home"
+                    class="text-white hover:text-cosmic-primary transition-all duration-300 relative group font-medium nav-link">
+                    <span class="relative z-10">Home</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cosmic-primary transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="#about"
+                    class="text-white hover:text-cosmic-primary transition-all duration-300 relative group font-medium nav-link">
+                    <span class="relative z-10">About</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cosmic-primary transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="#skills"
+                    class="text-white hover:text-cosmic-primary transition-all duration-300 relative group font-medium nav-link">
+                    <span class="relative z-10">Skills</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cosmic-primary transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="#java-stack"
+                    class="text-white hover:text-cosmic-primary transition-all duration-300 relative group font-medium nav-link">
+                    <span class="relative z-10">Java Stack</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cosmic-primary transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="#portfolio"
+                    class="text-white hover:text-cosmic-primary transition-all duration-300 relative group font-medium nav-link">
+                    <span class="relative z-10">Portfolio</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cosmic-primary transition-all duration-500 group-hover:w-full"></span>
+                </a>
+                <a href="#contact"
+                    class="text-white hover:text-cosmic-primary transition-all duration-300 relative group font-medium nav-link">
+                    <span class="relative z-10">Contact</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cosmic-primary transition-all duration-500 group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <a href="#contact"
+                    class="px-6 py-2 bg-gradient-to-r from-cosmic-java to-cosmic-spring rounded-full font-medium hover:shadow-lg transition-all duration-300 animate-scale-in">
+                    <span class="font-semibold">Hire Me</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden z-0">
+        <div class="floating-orb orb-1"
+            style="width: 400px; height: 400px; background: radial-gradient(circle, #00D4FF 0%, transparent 70%); top: 10%; left: 5%;">
+        </div>
+        <div class="floating-orb orb-2"
+            style="width: 500px; height: 500px; background: radial-gradient(circle, #ED8B00 0%, transparent 70%); bottom: 5%; right: 5%; animation-delay: -4s;">
+        </div>
+        <div class="floating-orb orb-3"
+            style="width: 300px; height: 300px; background: radial-gradient(circle, #6DB33F 0%, transparent 70%); top: 60%; left: 80%; animation-delay: -8s;">
+        </div>
+        <div id="starfield"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-24 pb-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between stagger-animation">
+                <div class="lg:w-1/2 mb-16 lg:mb-0 relative z-20">
+                    <div
+                        class="inline-block px-4 py-1 rounded-full bg-cosmic-java bg-opacity-20 border border-cosmic-java border-opacity-30 text-cosmic-java text-sm font-medium mb-6 backdrop-blur-sm animate-scale-in">
+                        <i class="fab fa-java mr-2"></i>Java Full Stack Developer
+                    </div>
+
+                    <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight animate-slide-up">
+                        Building <span class="text-gradient-java">Robust</span> Digital Solutions
+                    </h1>
+
+                    <div class="typewriter text-xl lg:text-2xl mb-8 font-light opacity-90">
+                        Java • Spring Boot • React • SQL
+                    </div>
+
+                    <p class="human-text text-lg mb-10 max-w-xl leading-relaxed opacity-90 animate-fade-in">
+                        I'm a passionate <strong>Java Full Stack Developer</strong> with 2+ years of experience creating
+                        efficient and scalable web applications. With expertise in <strong>Java, Spring Framework,
+                            and modern frontend technologies</strong>, I build solutions that solve real-world problems
+                        while delivering exceptional user experiences.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 mb-12 animate-fade-in" style="animation-delay: 0.4s">
+                        <a href="#portfolio"
+                            class="px-8 py-4 bg-gradient-to-r from-cosmic-java to-cosmic-spring rounded-full font-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center group">
+                            <span class="font-semibold">View My Projects</span>
+                            <i
+                                class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contact"
+                            class="px-8 py-4 border border-cosmic-java text-cosmic-java rounded-full font-medium hover:bg-cosmic-java hover:text-white transition-all duration-300 transform hover:-translate-y-1 flex items-center backdrop-blur-sm group">
+                            <span class="font-semibold">Get In Touch</span>
+                            <i
+                                class="fas fa-paper-plane ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                    <div class="flex space-x-8 animate-fade-in" style="animation-delay: 0.6s">
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-gradient-java">2+</div>
+                            <div class="opacity-70 text-sm font-medium">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-gradient-java">10+</div>
+                            <div class="opacity-70 text-sm font-medium">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-black text-gradient-java">5+</div>
+                            <div class="opacity-70 text-sm font-medium">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 flex justify-center relative">
+                    <div class="relative">
+                        <div
+                            class="hero-image w-80 h-80 lg:w-96 lg:h-96 animate-float flex items-center justify-center relative z-10 shadow-2xl">
+                            <div
+                                class="w-72 h-72 lg:w-88 lg:h-88 bg-cosmic-dark bg-opacity-20 rounded-full flex items-center justify-center overflow-hidden border-4 border-white border-opacity-10 backdrop-blur-sm">
+                                <img src="profile.jpg" alt="Profile Photo"
+                                    alt="Aniket Kumar" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <!-- Floating Tech Orbs -->
+                        <div
+                            class="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-r from-cosmic-java to-cosmic-spring rounded-full flex items-center justify-center animate-float shadow-2xl">
+                            <i class="fab fa-java text-white text-xl"></i>
+                        </div>
+
+                        <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-r from-cosmic-spring to-cosmic-primary rounded-full flex items-center justify-center animate-float shadow-2xl"
+                            style="animation-delay: 1s;">
+                            <i class="fas fa-database text-white text-lg"></i>
+                        </div>
+
+                        <div class="absolute top-1/2 -right-12 transform -translate-y-1/2 w-24 h-24 bg-gradient-to-r from-cosmic-primary to-cosmic-purple rounded-full flex items-center justify-center animate-float shadow-2xl"
+                            style="animation-delay: 2s;">
+                            <i class="fab fa-react text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative z-10 bg-cosmic-dark bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">About Me</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    Passionate Java Full Stack Developer with a focus on creating efficient, scalable solutions
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="card p-8 animate-scale-in">
+                    <p class="human-text text-lg mb-6">
+                        I'm Aniket Kumar, a dedicated Java Full Stack Developer with over 2 years of professional
+                        experience in the IT industry. My journey began as a Front-End Developer, and through
+                        continuous learning and a Full Stack Development course from JSpider, I've expanded my
+                        expertise to encompass the entire development stack.
+                    </p>
+                    <p class="human-text text-lg mb-6">
+                        I specialize in building responsive, interactive web applications using Java, Spring Boot,
+                        and modern frontend technologies. My approach combines clean code principles with
+                        user-centric design to create solutions that are both technically robust and visually appealing.
+                    </p>
+                    <p class="human-text text-lg">
+                        When I'm not coding, I enjoy exploring new technologies, contributing to open-source
+                        projects, and continuously expanding my skill set to stay at the forefront of web development.
+                    </p>
+
+                    <div class="mt-8 pt-6 border-t border-cosmic-primary border-opacity-20">
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-gradient-java">BE CSE</div>
+                                <div class="opacity-70 text-sm">Computer Science</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-gradient-java">JSpider</div>
+                                <div class="opacity-70 text-sm">Full Stack Course</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-black text-gradient-java">2+ Years</div>
+                                <div class="opacity-70 text-sm">IT Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">Technical Skills</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    A comprehensive overview of my technical expertise across the full development stack
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8 group animate-scale-in">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-cosmic-java to-cosmic-spring rounded-2xl flex items-center justify-center mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
+                        <i class="fab fa-java text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4">Backend Development</h3>
+                    <p class="human-text mb-6 opacity-90">
+                        Building robust server-side applications with Java and Spring ecosystem.
+                    </p>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Java</span>
+                                <span class="text-sm">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Spring Boot</span>
+                                <span class="text-sm">73%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Spring MVC</span>
+                                <span class="text-sm">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-8 group animate-scale-in" style="animation-delay: 0.1s">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-cosmic-primary to-cosmic-accent rounded-2xl flex items-center justify-center mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4">Frontend Development</h3>
+                    <p class="human-text mb-6 opacity-90">
+                        Creating responsive, interactive user interfaces with modern web technologies.
+                    </p>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">HTML5/CSS3</span>
+                                <span class="text-sm">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">JavaScript</span>
+                                <span class="text-sm">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">React.js</span>
+                                <span class="text-sm">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-8 group animate-scale-in" style="animation-delay: 0.2s">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-cosmic-accent to-cosmic-neon rounded-2xl flex items-center justify-center mb-6 transform group-hover:rotate-12 transition-transform duration-500 shadow-xl">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4">Database & Tools</h3>
+                    <p class="human-text mb-6 opacity-90">
+                        Working with databases and development tools to build complete solutions.
+                    </p>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">SQL</span>
+                                <span class="text-sm">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Git/GitHub</span>
+                                <span class="text-sm">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm">Maven</span>
+                                <span class="text-sm">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Java Full Stack Section -->
+    <section id="java-stack" class="py-20 relative z-10 bg-cosmic-dark bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">Java Full Stack Expertise</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    Comprehensive knowledge of Java ecosystem and full-stack development
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="animate-slide-in">
+                    <div class="card p-8 java-card">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center">
+                            <i class="fab fa-java text-cosmic-java mr-3"></i>
+                            Java Technologies
+                        </h3>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3 text-cosmic-java">Core Java</h4>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge">OOP Concepts</span>
+                                <span class="tech-badge">Collections Framework</span>
+                                <span class="tech-badge">Multithreading</span>
+                                <span class="tech-badge">Exception Handling</span>
+                                <span class="tech-badge">JDBC</span>
+                                <span class="tech-badge">Java 8 Features</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3 text-cosmic-spring">Spring Framework</h4>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge"
+                                    style="background: rgba(109, 179, 63, 0.2); border-color: rgba(109, 179, 63, 0.3);">Spring
+                                    Boot</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(109, 179, 63, 0.2); border-color: rgba(109, 179, 63, 0.3);">Spring
+                                    MVC</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(109, 179, 63, 0.2); border-color: rgba(109, 179, 63, 0.3);">Spring
+                                    Security</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(109, 179, 63, 0.2); border-color: rgba(109, 179, 63, 0.3);">Spring
+                                    Data JPA</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(109, 179, 63, 0.2); border-color: rgba(109, 179, 63, 0.3);">Spring
+                                    REST</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3 text-cosmic-primary">Other Java Technologies</h4>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge">Hibernate</span>
+                                <span class="tech-badge">JPA</span>
+                                <span class="tech-badge">Maven</span>
+                                <span class="tech-badge">JUnit</span>
+                                <span class="tech-badge">Mockito</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-slide-in" style="animation-delay: 0.1s">
+                    <div class="card p-8 spring-card">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center">
+                            <i class="fas fa-layer-group text-cosmic-spring mr-3"></i>
+                            Full Stack Components
+                        </h3>
+
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3 text-cosmic-primary">Frontend Technologies</h4>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge">HTML5</span>
+                                <span class="tech-badge">CSS3</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">React.js</span>
+                                <span class="tech-badge">Tailwind CSS</span>
+                                <span class="tech-badge">Bootstrap</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3 text-cosmic-accent">Database & APIs</h4>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge"
+                                    style="background: rgba(255, 0, 128, 0.2); border-color: rgba(255, 0, 128, 0.3);">MySQL</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(255, 0, 128, 0.2); border-color: rgba(255, 0, 128, 0.3);">RESTful
+                                    APIs</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(255, 0, 128, 0.2); border-color: rgba(255, 0, 128, 0.3);">JSON</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(255, 0, 128, 0.2); border-color: rgba(255, 0, 128, 0.3);">JWT</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3 text-cosmic-neon">Tools & Methodologies</h4>
+                            <div class="flex flex-wrap">
+                                <span class="tech-badge"
+                                    style="background: rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.3);">Git
+                                    & GitHub</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.3);">Postman</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.3);">Eclipse</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.3);">VS
+                                    Code</span>
+                                <span class="tech-badge"
+                                    style="background: rgba(0, 255, 136, 0.2); border-color: rgba(0, 255, 136, 0.3);">Agile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">Professional Experience</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    My journey in the IT industry and professional growth
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item animate-slide-in">
+                    <div class="timeline-dot"></div>
+                    <div class="card p-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <h3 class="text-xl font-bold">Junior Developer</h3>
+                            <span class="text-cosmic-java font-semibold">2023 - 2025</span>
+                        </div>
+                        <p class="text-lg text-cosmic-java mb-2">Unobridge Solution Pvt. Ltd.</p>
+                        <p class="opacity-90 mb-4">
+                            As a Junior Developer, I've been responsible for building responsive, interactive web pages
+                            using HTML, CSS, and JavaScript. I work closely with designers, back-end developers, and
+                            project managers to ensure smooth development processes and deliver high-quality solutions.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-cosmic-java bg-opacity-20 text-cosmic-java rounded-full text-sm">HTML/CSS</span>
+                            <span
+                                class="px-3 py-1 bg-cosmic-java bg-opacity-20 text-cosmic-java rounded-full text-sm">JavaScript</span>
+                            <span
+                                class="px-3 py-1 bg-cosmic-java bg-opacity-20 text-cosmic-java rounded-full text-sm">GitHub</span>
+                            <span
+                                class="px-3 py-1 bg-cosmic-java bg-opacity-20 text-cosmic-java rounded-full text-sm">React.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-slide-in" style="animation-delay: 0.1s">
+                    <div class="timeline-dot"></div>
+                    <div class="card p-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <h3 class="text-xl font-bold">Java Full Stack Development Course</h3>
+                            <span class="text-cosmic-spring font-semibold">2025 - Present</span>
+                        </div>
+                        <p class="text-lg text-cosmic-spring mb-2">JSpider Training Center</p>
+                        <p class="opacity-90 mb-4">
+                            Completed an intensive full-stack development course that provided comprehensive
+                            knowledge of both frontend and backend technologies, with a focus on Java-based
+                            web application development.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-cosmic-spring bg-opacity-20 text-cosmic-spring rounded-full text-sm">Java</span>
+                            <span
+                                class="px-3 py-1 bg-cosmic-spring bg-opacity-20 text-cosmic-spring rounded-full text-sm">Spring
+                                Framework</span>
+                            <span
+                                class="px-3 py-1 bg-cosmic-spring bg-opacity-20 text-cosmic-spring rounded-full text-sm">SQL</span>
+                            <span
+                                class="px-3 py-1 bg-cosmic-spring bg-opacity-20 text-cosmic-spring rounded-full text-sm">HTML/CSS/JS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 relative z-10 bg-cosmic-dark bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">Featured Projects</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    A showcase of my work demonstrating full-stack development capabilities
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="project-card card animate-scale-in">
+                    <div
+                        class="relative overflow-hidden rounded-2xl h-64 bg-gradient-to-br from-cosmic-java to-cosmic-spring">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <h3 class="text-2xl font-bold text-white">Gurubhog</h3>
+                        </div>
+                        <div class="project-overlay">
+                            <h3 class="text-xl font-bold mb-2">Gurubhog - Food Ordering System</h3>
+                            <p class="text-sm opacity-90 mb-4">
+                                An online food ordering and restaurant management system that connects customers
+                                with restaurants, allowing them to browse menus, place online orders, and track
+                                deliveries.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">Java</span>
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">Spring
+                                    Boot</span>
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">React.js</span>
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card card animate-scale-in" style="animation-delay: 0.1s">
+                    <div
+                        class="relative overflow-hidden rounded-2xl h-64 bg-gradient-to-br from-cosmic-primary to-cosmic-accent">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <h3 class="text-2xl font-bold text-white">E-Commerce Platform</h3>
+                        </div>
+                        <div class="project-overlay">
+                            <h3 class="text-xl font-bold mb-2">Full-Stack E-Commerce Solution</h3>
+                            <p class="text-sm opacity-90 mb-4">
+                                A complete e-commerce platform with user authentication, product catalog,
+                                shopping cart, and payment integration built using Java Spring Boot and React.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">Spring
+                                    MVC</span>
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">Hibernate</span>
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">REST
+                                    API</span>
+                                <span
+                                    class="px-2 py-1 bg-cosmic-primary bg-opacity-20 text-cosmic-primary rounded text-xs">JWT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 animate-fade-in" style="animation-delay: 0.3s">
+                <a href="https://github.com/aniketkumar057" target="_blank"
+                    class="inline-flex items-center text-cosmic-primary hover:text-cosmic-accent transition-colors duration-300 group">
+                    <span class="font-semibold">View More on GitHub</span>
+                    <i class="fab fa-github ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">Education</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    My academic background and continuous learning journey
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="card p-8 animate-scale-in">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                        <h3 class="text-2xl font-bold">Bachelor of Engineering - Computer Science</h3>
+                        <span class="text-cosmic-java font-semibold mt-2 md:mt-0">2020 - 2024</span>
+                    </div>
+                    <p class="text-lg text-cosmic-java mb-4">Vinayaka Mission's Kirupananda Engineering College, Salem,
+                        Tamil Nadu</p>
+                    <p class="opacity-90">
+                        Completed my Bachelor's degree in Computer Science and Engineering, gaining a strong
+                        foundation in computer science principles and software
+                        development methodologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative z-10 bg-cosmic-dark bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 tracking-tight animate-fade-in">Get In Touch</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.1s">
+                    Interested in working together? Let's discuss your next project
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="animate-slide-in">
+                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <input type="text" placeholder="Your Name" class="contact-input w-full">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" class="contact-input w-full">
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Subject" class="contact-input w-full">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="5" class="contact-input w-full"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="px-8 py-4 bg-gradient-to-r from-cosmic-java to-cosmic-spring rounded-full font-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                            <span class="font-semibold">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="animate-slide-in" style="animation-delay: 0.1s">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div
+                            class="flex items-center p-4 card hover:transform hover:-translate-y-2 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-cosmic-java"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="opacity-90">aniketkumar62021@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-center p-4 card hover:transform hover:-translate-y-2 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-cosmic-java"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Location</h4>
+                                <p class="opacity-90">Bengaluru, India</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-center p-4 card hover:transform hover:-translate-y-2 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fab fa-github text-cosmic-java"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">GitHub</h4>
+                                <p class="opacity-90">github.com/aniketkumar057</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4 mt-8">
+                        <a href="www.linkedin.com/in/aniketkumar057" target="_blank"
+                            class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center text-cosmic-java hover:bg-cosmic-java hover:text-white transition-all duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/aniketkumar057" target="_blank"
+                            class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center text-cosmic-java hover:bg-cosmic-java hover:text-white transition-all duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com/aniketkumar057?s=21"
+                            class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center text-cosmic-java hover:bg-cosmic-java hover:text-white transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:aniketkumar62021@gmail.com"
+                            class="w-12 h-12 rounded-full bg-cosmic-java bg-opacity-20 flex items-center justify-center text-cosmic-java hover:bg-cosmic-java hover:text-white transition-all duration-300">
+
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 relative z-10 border-t border-cosmic-primary border-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="opacity-70">&copy; 2024 Aniket Kumar. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
+                    <a href="#" class="opacity-70 hover:opacity-100 transition-opacity duration-300">Terms of
+                        Service</a>
+                    <a href="#home"
+                        class="opacity-70 hover:opacity-100 transition-opacity duration-300 flex items-center">
+                        <span>Back to Top</span>
+                        <i class="fas fa-arrow-up ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create starfield
+        function createStarfield() {
+            const container = document.getElementById('starfield');
+            const starCount = 150;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+
+                // Add color variation for some stars
+                if (Math.random() > 0.7) {
+                    const colors = ['#00D4FF', '#ED8B00', '#6DB33F', '#8A2BE2'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    star.style.backgroundColor = color;
+                    star.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+                }
+
+                container.appendChild(star);
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-3', 'shadow-lg');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('py-3', 'shadow-lg');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .project-card, .testimonial-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize
+        createStarfield();
+
+        // Add initial animations
+        window.addEventListener('load', () => {
+            document.body.classList.add('theme-transition');
+        });
+    </script>
+</body>
+
+</html>
